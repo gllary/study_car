@@ -1,0 +1,58 @@
+<!--pages/fourpeople/fourpeople.wxml-->
+
+<view class='fourpeople'>
+ <image src='../image/f_bgp.jpg' class='bg'></image>
+  <view class='fourpeople_txt'>
+       <text class='word1'>
+      “四人行，必有你师”
+      </text>
+      <text class='word2'>
+      每台车四个人轮流训练，相互学习指导!
+      </text>
+      <text class='word3'>
+      学车互相八卦吹牛，训练不寂寞!
+      </text>
+
+  </view>
+
+<view class='fourpeople_button' bindtap='show'>
+  <button class='fourpeople_signup'>
+立即报名参加
+</button>
+
+</view>
+
+</view>
+<!--这是一个单独的表单-->
+<view class='form' hidden="{{flag}}" >
+<view class='pic_back'>
+  <view class='pic_abut'>
+       <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+              <swiper-item>
+                 <image bindtap="hide" class='pic_img' src="{{item}}"/>
+              </swiper-item>
+           </block>
+    </view>
+</view>
+  <view class='content'>
+  <!--
+  这是如果是图片的话，就用这个
+   
+  
+  -->
+  <view class='content_txt'>
+      <text>{{message}}</text>
+    </view>
+   
+    <view class='content_btn'>
+      <button class='onlyfor_fontsize' bindtap='hide' bindtap='Toentryform' >
+      开始填写
+      </button>
+    </view>
+
+  </view>
+
+
+</view>
+
+

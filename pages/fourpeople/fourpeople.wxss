@@ -1,0 +1,90 @@
+/* pages/fourpeople/fourpeople.wxss */
+.fourpeople_signup {
+  background-color: #d0dffe;
+  box-shadow: 2px 2px 2px 2px #9ab2f0;
+  color: white
+}
+.fourpeople_button{
+  margin-top: 85%;
+ margin-left: 25%;
+  width: 50%;
+  bottom: 0;
+
+}
+.fourpeople_txt {
+    font-size: 15px;
+/* margin-bottom: 40px;*/
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+ }
+ .form {
+  position:fixed;
+  top:0;
+  background:rgba(245,245,245,0.8);
+  width:100%;
+  height:100%;
+}
+.content {
+  margin: 0 auto;
+  background-color: white;
+  margin-top:53%;
+  width: 500rpx;
+  height:300rpx;
+  border-radius: 10rpx;
+  padding: 20rpx;
+}
+.content_txt {
+  font-size: 15px;
+  font-weight: 600
+}
+
+.content_btn {
+  width: 50%;
+  
+  margin: 13% auto;
+  font-size: 15px;
+}
+.onlyfor_fontsize {
+  background: #9ab2f0;
+  color: white;
+  font-size: 10px;
+}
+
+.pic_img {
+  position: fixed;
+  top: 80rpx;
+  right: 80rpx;
+  height: 30rpx;
+  width: 30rpx;
+}
+.bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1111;
+}
+ .word1{
+   font-size: 17px;
+   color: #262128;
+   font-style: Microsoft JhengHei UI;
+  padding-left: 50px;
+  margin-top: 5px;
+  font-weight: 600
+ }
+  .word2{
+   font-size: 17px;
+   color: #262128;
+   font-style: Microsoft JhengHei UI;
+  padding-left: 50px;
+  margin-top: 5px;
+  font-weight: 600
+ }
+  .word3{
+   font-size: 17px;
+   color: #262128;
+   font-style: Microsoft JhengHei UI;
+  padding-left: 50px;
+  margin-top: 5px;
+  font-weight: 600
+ }

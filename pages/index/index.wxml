@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<!--首页的注册界面，-->
+<view class="index">
+  <image class="pic" src="../image/welcome.png"></image>
+ </view>
+
+  <view class='second'>
+      <view>
+    <button class='wel_btn' bindtap='toindex' >欢迎进入</button>
+      </view>
+  <view class='wel_txt'>
+  隶属于猎焰文化
+  </view>
+ 
+  </view>
+  
+

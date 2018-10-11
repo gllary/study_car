@@ -1,0 +1,34 @@
+<!--pages/orderteacher/orderteacher.wxml-->
+
+
+<!--时间预约的背景-->
+<view class='teacherback'>
+<image class='backgr' src='../image/userinfoback.png'></image>
+</view>
+<view class='order_top'>学车时间预约</view>
+
+
+<view class='orderteacher'>
+
+  <view class='timeorder'>
+  <image class='ordertime' src='../image/time1.png' bindtap='time1'></image> 
+  </view>
+
+  <view class='timeorder'>
+  <image class='ordertime' src='../image/time2.png' bindtap='time2'></image> 
+  </view>
+
+  <view class='timeorder'>
+  <image class='ordertime' src='../image/time3.png' bindtap='time3'></image> 
+  </view>
+
+  <view class='timeorder'>
+  <image class='ordertime' src='../image/time4.png' bindtap='time4'></image> 
+  </view>
+
+</view>
+      
+
+
+
+

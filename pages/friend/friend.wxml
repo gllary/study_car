@@ -1,0 +1,66 @@
+<!--pages/friend/friend.wxml-->
+<view class='friendback'>
+    <image class='bgp' src='../image/f_bgp.jpg'></image>
+</view>
+<view class='friend_top'>考友圈</view>
+<view class='news'>
+    <image class='n_pic' src='../image/news.png'></image>
+    <text class='n_name'>最新消息</text>
+    <textarea class='new' disabled='true'>{{inform}}</textarea>
+</view>
+<view class='share'>
+  <view class='st_txt'>
+    车友分享
+  </view>
+  <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" >
+  <view wx:for="{{shares}}" wx:key="share" class='share_item' >
+    <view  data-id="{{item.id}}">
+        <image src='{{item.image_urls}}' class='s_pic'></image>
+        <view class='share_word' style='white-space:pre-wrap'>
+          <text class='share_txt'>{{item.share_txt}}</text>
+        </view>
+        <view class='like_unlike_comment' >
+          <image  data-id="{{item.id}}" class='feedback_like' src="{{item.like?'../image/like1.png' :           '../image/like0.png'}}" bindtap='likereact' ></image>
+           <image class='share_comment' src='../image/comment.png' bindtap='show'></image>
+        </view>   
+        <view class='user_pic' >
+          <image class='u_pic'></image>
+        </view> 
+    </view>
+  </view>
+  </scroll-view>
+</view>
+<!--隐藏的评论按钮-->
+<view class='input_comment' hidden="{{flag}}">
+  <view class='jump_white'>
+    <view class='input_txt'>
+      <textarea class='input_meesage' placeholder='请在这里发布评论'></textarea>
+    </view>
+    <view class='input_btn'>
+      <button class='input_button' bindtap='hide'>发布评论</button>
+    </view>
+  </view>
+  <view class='back'>
+    <image class='back_img' src='../image/forback.png' bindtap='hide'></image>
+  </view>
+</view>  
+
+<view class='ad'> 
+  
+  <view class='title_txt'>
+    精心推荐
+  </view>
+  <view class='container'>
+    <!--上方轮播图片广告宣传-->
+    <view class='swiper_adv'>
+      <swiper indicator-dots='true' autoplay='true' interval='3000' duration='1000' circular='true' vertical="true">
+        <block wx:for="{{imgUrls}}">
+          <swiper-item>
+            <image class='swiper_img' style='width:100%;height=100%;' src="{{item}}" bindtap='showad' >
+            </image>
+           </swiper-item>
+        </block>
+      </swiper>
+   </view>
+  </view>
+</view>
