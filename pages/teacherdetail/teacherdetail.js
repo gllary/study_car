@@ -8,58 +8,12 @@ Page({
     imgUrls: [
       '../image/forback.png',
     ],
+    tid:null,
     time:"2018.9.8",
     message: "在这发表您的评论",
     flag: true,
-    teachers: [{
-      id: 1,
-      name: "魏教练",
-      introduce: "为人亲善 深受学员爱戴 经常有学员主动选择让魏教练带他练车 谈吐风趣 有多年驾驶培训教学经验 是我们驾培行业辛勤的园丁"
-    },
-
-    ],
-    comments: [{
-      id: 1,
-      name: "fourous",
-      comment: "这是我的简介，我来自武汉理工大学，计算机学院，是一名优秀的少先队员，我立志改变中国，改变社会，改变武汉理工大学的破壁风貌而努力"
-    },
-
-    {
-      id: 2,
-      name: "adila",
-      comment: "这是我的简介，我来自武汉理工大学，计算机学院，是一名优秀的少先队员，我立志改变中国，改变社会，改变武汉理工大学的破壁风貌而努力"
-      },
-
-      {
-        id: 3,
-        name: "adila",
-        comment: "这是我的简介，我来自武汉理工大学，计算机学院，是一名优秀的少先队员，我立志改变中国，改变社会，改变武汉理工大学的破壁风貌而努力"
-      },
-
-      {
-        id: 4,
-        name: "adila",
-        comment: "这是我的简介，我来自武汉理工大学，计算机学院，是一名优秀的少先队员，我立志改变中国，改变社会，改变武汉理工大学的破壁风貌而努力"
-      },
-
-      {
-        id: 5,
-        name: "adila",
-        comment: "这是我的简介，我来自武汉理工大学，计算机学院，是一名优秀的少先队员，我立志改变中国，改变社会，改变武汉理工大学的破壁风貌而努力"
-      },
-
-      {
-        id: 6,
-        name: "adila",
-        comment: "这是我的简介，我来自武汉理工大学，计算机学院，是一名优秀的少先队员，我立志改变中国，改变社会，改变武汉理工大学的破壁风貌而努力"
-      },
-
-      {
-        id: 7,
-        name: "adila",
-        comment: "这是我的简介，我来自武汉理工大学，计算机学院，是一名优秀的少先队员，我立志改变中国，改变社会，改变武汉理工大学的破壁风貌而努力"
-      }
-    ]
+    teachers: null,
+    comments: null,
   },
   show: function () {
     this.setData({ flag: false })
@@ -72,7 +26,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    console.log(options.tid)
+    var that=this
+    that.setData({
+      tid:options.tid
+    })
+
   },
 
   /**
@@ -86,7 +45,70 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var that=this
+   
+    wx.request({
+      url: 'https://www.lieyanwenhua.com/coach_single',
+      method: 'POST',
+      data: {
+        "tid": that.data.tid
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res.data);
+        that.setData({
+          teachers:res.data.coach
+        })
+        console.log(that.data.teachers)
+
+      },
+      fail: function (res) {
+        console.log(res);
+      }
+    })
+      wx.request({
+        url: 'https://www.lieyanwenhua.com/coach_comment',
+        method: 'POST',
+        data: {
+          "tid": that.data.tid
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          console.log(res.data);
+          that.setData({
+            comments: res.data.comment_user
+          })
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      })
+      // 在这里通过openid请求评论人物的头像和昵称信息
+    // wx.request({
+    //   url: 'https://www.lieyanwenhua.com/userqueryByid',
+    //   method: 'POST',
+    //   data: {
+    //     "openid": 
+    //   },
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data);
+    //     that.setData({
+    //       comments: res.data.comment_user
+    //     })
+    //   },
+    //   fail: function (res) {
+    //     console.log(res);
+    //   }
+    // })
+
+
   },
 
   /**
@@ -128,6 +150,30 @@ Page({
     wx.navigateTo({
       url: '../orderteacher/orderteacher',
     })
+  },
+  input_button:function(){
+    //这里是发布评论的地方，发布评论最好是在此重拉一次评论数据
+  //   wx.request({
+  //     url: 'https://www.lieyanwenhua.com/comment_insert',
+  //     method: 'POST',
+  //     data: {
+  //       "tid": that.data.tid,
+  //       "openid":that.data.openid,
+  //       "comment":"这里是评论内容"
+  //     },
+  //     header: {
+  //       'content-type': 'application/json'
+  //     },
+  //     success: function (res) {
+  //      //这里评论成功会返回1
+
+
+
+  //     },
+  //     fail: function (res) {
+  //       console.log(res);
+  //     }
+  //   })
   }
 })
 

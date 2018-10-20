@@ -16,24 +16,24 @@
       </view> 
 
       <view class='nick_vip'>
-       <text class='userinfo_nickname' bindtap='usersetup'>{{userInfo.nickName}}</text>
+       <text class='userinfo_nickname' bindtap='usersetup'>{{userInfo.nickName}} </text>
        <image class='is_vip' src='../../image/vip1.png'></image>
       </view> 
     </view>
     
         <view class='issign'>
-         <text class='is_conclude'>{{if_apply}}</text>
+         <text class='userinfo_nickname'>{{if_apply}}</text>
         </view>
         <view class='balance_integral_coupon'>
           <view class='data_n'>
-          <text class='balance' bindtap='Tobalance'>余额：{{moneybalance}}</text>
+          <text class='balance' bindtap='Tobalance'>余额：{{Money}}</text>
         </view>
 
         <view class='data_n'>
-          <text class='balance' bindtap='Tointegral'>积分: {{couponnum}}</text>
+          <text class='balance' bindtap='Tointegral'>积分: {{coupon}}</text>
         </view>
         <view class='data_n'>
-          <text class='balance' bindtap='Tocoupon'>优惠券: {{integralnum}}</text>
+          <text class='balance' bindtap='Tocoupon'>优惠券: {{inter}}</text>
         </view>
   </view>    
 </view>

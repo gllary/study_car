@@ -2,12 +2,12 @@
 <view id='teacher_all'>
 <!--这里是静态测试设置view-->
   <view class='teacher_one'>
-    <view wx:for="{{teachers}}" wx:key="teacher">
-      <view class="teacher-item"   data-id="{{item.id}}">
-        <view bindtap='To_teacher_detail' data-id="{{item.id}}" >
+    <view wx:for="{{coach}}" wx:key="teacher">
+      <view class="teacher-item"   data-id="{{item.tid}}">
+        <view bindtap='To_teacher_detail' data-id="{{item.tid}}" >
           <view class='pic_intro'>
             <image class='teacher_pic' src='../image/teacher1.png' ></image>
-            <text class='item_name'>{{item.name}}\n</text>
+            <text class='item_name'>{{item.tname}}\n</text>
           </view>
           <view class='forintroduce'>
             <text class='item_introduce'>{{item.introduce}}\n</text>

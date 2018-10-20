@@ -6,30 +6,7 @@ Page({
    */
   data: {
     bgimg:"",
-    
-    teachers:[{
-      id:0,
-      like: 1,
-      unlike: 1,
-      name:"魏教练 ",
-      introduce:"为人忠厚 年纪不大 说话比较幽默 虽然刚加入驾驶培训行业 但是善于创新 有自己的教学方式 让学员学车轻松愉快"
-    },
-      {
-        id: 1,
-        like:1,
-        unlike:1,
-        name: "万教练",
-        introduce: "为人忠厚 年纪不大 说话比较幽默 虽然刚加入驾驶培训行业 但是善于创新 有自己的教学方式 让学员学车轻松愉快"
-      },
-      {
-        id:2,
-        like:1,
-        unlike:1,
-        name:"张教练",
-        introduce:"为人淳朴 资历较高 有独特的教学方法 为学员着想 认真负责 "
-
-      }
-    ],
+    coach:null,
   },
 
   /**
@@ -50,7 +27,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that=this
+    wx.request({
+      url: 'https://www.lieyanwenhua.com/coachall',
+      method: 'POST',
+      data: {
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log("这里是教练的信息")
+        console.log(res.data.coachall)
+        that.setData({
+          coach: res.data.coachall
+        })
+
+      },
+      fail: function (res) {
+        console.log(res);
+
+      }
+    })
   },
 
   /**
@@ -89,10 +87,10 @@ Page({
   },
   To_teacher_detail:function(e)
   {
-    var id = e.target.dataset.id;
+    var id = e.currentTarget.dataset.id;
     console.log(e),
     wx.navigateTo({
-      url: '../teacherdetail/teacherdetail',
+      url: '../teacherdetail/teacherdetail?tid='+id,
     })
   },
   //这里的官方方法改变，需要字符串加起来

@@ -116,30 +116,23 @@ Page({
    * 报名表单提交
    */
   apply:function(){
-    wx.showToast({
-      title:'1',
-    })
-    wx.request({
-      url: 'http://result.eolinker.com/gEUIzZyd311350ff3d0982a5b71cc809c83d3b83a0d021c?uri=/apply/',
-      data:{
-        'name':this.data.name,
-        'tel': this.data.tel,
-        'id_card': this.data.id_card,
-        'address': this.data.adress,
-        'qq': this.data.qq,
-        'wx': this.data.weixin,
-        'choice_teadher': this.data.teacher,
-      },
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
-      method:'POST',
-      success:function(res){
-        wx.showToast({
-          title: '成功！',
-        })
-        wx.navigateBack({
-          delta: -1
-        });
-      }
-    })
+    var that=this
+    console.log(this.data.name+this.data.tel+this.data.id_card+this.data.address+this.data.qq+this.data.weixin+this.data.teacher)
+    console.log(this.data.address==null)
+    console.log(this.data.tel=="")
+    console.log(this.data.tel == '')
+    //首先判断必填项是否为空，为空提示，不为空则继续下一步
+    if (this.data.name == "" | this.data.tel == "" | this.data.id_card == "" | this.data.address == ""){
+      wx.showToast({
+        title: '必填项缺失',
+      })
+    }
+    else {
+      wx.navigateTo({
+        url: '../formpay/formpay?name=' + that.data.name + '&tel=' + that.data.tel + '&idcard=' + that.data.id_card + '&address=' + that.data.address + '&qq=' + that.data.qq + '&wechat=' + that.data.weixin + '&teacher=' + that.data.teacher,
+      })
+
+    }
+
   }
 })

@@ -16,7 +16,7 @@
       </text>
   </view>
 
-<view class='onepeople_button' bindtap='show' >
+<view class='onepeople_button' bindtap='Toentryform' >
   <button class='onepeople_signup'>
 立即报名参加
 </button>
@@ -25,16 +25,16 @@
 
 </view>
 <!--这是一个单独的表单-->
-<view class='form' hidden="{{flag}}" >
-<view class='pic_back'>
-  <view class='pic_abut'>
+<!--<view class='form' hidden="{{flag}}" >
+  <view class='pic_back'>
+    <view class='pic_abut'>
        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
               <swiper-item>
                  <image bindtap="hide" class='pic_img' src="{{item}}"/>
               </swiper-item>
-           </block>
+        </block>
     </view>
-</view>
+  </view>
 
   <view class='content'>
    
@@ -46,9 +46,6 @@
       开始填写
       </button>
     </view>
-
   </view>
-
-
-</view>
+</view>-->
 

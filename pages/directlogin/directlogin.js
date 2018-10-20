@@ -68,6 +68,10 @@ Page({
 
   onGotUserInfo: function (e) {
     console.log(e.detail.userInfo)
+    wx.showToast({
+      title: '登录',
+      icon:'loading'
+    })
     var that = this;
     //获取必要的变量
     var userInfo = e.detail.userInfo;
@@ -80,16 +84,6 @@ Page({
           key: 'userInfo',
           data: userInfo,
         })
-
-        /**
-         * wx.switchTab({
-          url: '../home/home',
-        })
-
-         */
-        
-      
-       
         var code = res.code;//获取code这个code是实时变化的
         if (code) {
           //userInfo是一个数组,这里会将这个数据发送到后台
@@ -104,19 +98,25 @@ Page({
 
   getOpenId: function (code, appId, appSecret, userInfo) {
     var that = this;
-    var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + appSecret + '&js_code=' + code + '&grant_type=authorization_code';
+    console.log(code)
+    var url = 'https://www.lieyanwenhua.com/code';
     wx.request({
       url: url,
-      method: 'GET',
-      data: '',
+      data: {
+        code: code,
+      },
+      method: 'POST',
       header: {
-        'content-type': 'application/json'
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
         console.log(res.data);
         var openid = res.data.openid;
-        that.sqluser(openid, userInfo);
-       //that.sqlData(openid, userInfo);
+        wx.setStorage({
+          key: 'openid',
+          data: openid,
+        })
+        that.sqluser(openid)
       },
       fail: function () {
         console.log('请求openID失败');
@@ -124,11 +124,11 @@ Page({
     })
   },
   
-  sqluser: function (openid, userInfo){
+  sqluser: function (openid){
     console.log(openid);
     var that=this;
     wx.request({
-      url: 'http://localhost:8081/userqueryByid',
+      url: 'https://www.lieyanwenhua.com/userqueryByid',
       method:'POST',
       data:{
         "openid":openid
@@ -138,18 +138,18 @@ Page({
       },
       success:function(res){
         console.log(res.data);
-        if (res.data.userbyid==null){
+        // 寻找这个用户，如果没找到，就存入数据，作为注册用户使用
+        if (res.data.userbyid==0){
           console.log("sql");
          that.sqlData(openid, userInfo);
         }
         else{
           console.log("sqlget");
-          //userInfo = res.data.userbyid;
+          //如果找到这个用户，就不存进入，直接存入缓存
           wx.setStorage({
             key: 'userInfo',
             data: res.data.userbyid,
           })
-     
           wx.switchTab({
             url: '../home/home',
           })
@@ -166,18 +166,17 @@ Page({
     console.log(userInfo);
     var that = this;
     wx.request({
-      url: 'http://localhost:8081/userwxlogin',
+      url: 'https://www.lieyanwenhua.com/userinsert',
       method: 'POST',
       data: {
         "openid": openid,
-       "nickName": userInfo.nickName,
+        "nickName": userInfo.nickName,
         "gender": userInfo.gender,
         "city":userInfo.city,
         "province":userInfo.province,
         "language":userInfo.language,
         "country": userInfo.country,
         "avatarUrl": userInfo.avatarUrl,
-
       },
       header: {
         'content-type': 'application/json'
@@ -191,12 +190,8 @@ Page({
       },
       fail: function (res) {
         console.log(res);
+
       }
     })
   },
-  tohome:function(){
-    wx.switchTab({
-      url: '../home/home',
-    })
-  }
 })

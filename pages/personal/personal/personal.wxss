@@ -103,10 +103,7 @@ font-weight: 500
   width: 100%;
   height: 100%;
   padding-top: 3rpx;
-   background-color: #ebebeb;
-  
-
-
+  background-color: #ebebeb;
 }
 .change {
   width: 100%;

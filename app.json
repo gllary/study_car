@@ -21,7 +21,9 @@
     "pages/login/forgetpasswd/forgetpasswd",
     "pages/login/certification/certification",
     "pages/test/test",
-    "pages/directlogin/directlogin"
+    "pages/directlogin/directlogin",
+    "pages/formpay/formpay",
+    "pages/friend/my_message"
   ],
   "window": {
     "backgroundTextStyle": "light",

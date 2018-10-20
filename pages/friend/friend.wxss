@@ -1,116 +1,5 @@
 /* pages/friend/friend.wxss */
-.friendback {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  z-index: -1111;
-}
-.bgp{
-  width: 100%;
-  height: 100%;
-}
-.friend_top{
-  padding-top: 35rpx;
-  text-align: center;
-  font-size: 23px;
-  font-weight: 550;
-  color: white;
-  
-}
-.news{
-  width: 90%;
-  height: 200rpx;
-  margin-left:5%;
-  margin-top: 60rpx;
-  background-color: white;
-  border-radius: 10rpx;
-  border: 1px solid #ccc;
-}
-.n_pic{
-   height: 50rpx;
-  width: 50rpx;
-  text-align: center;
-  position: absolute;
-  padding-right: 20rpx;
-  margin-right: 100rpx;
-  padding-bottom: 5rpx;
-}
-.n_name{
-  padding-left: 9%;
-  font-size: 14px;
-  color: #eb9518;
 
-}
-.new{
-  color: #eb9518;
-  padding-left: 13rpx;
-  font-size: 14px;
-}
-.share{
-  width: 100%;
-  height: 450rpx;
-  margin-top:98rpx;
- 
-}
-
-.share_item{
-    width: 50%;
-    height: 450rpx; 
-    display: inline-block; 
-    margin-left: 10rpx;
-    background-color: white;
-    border-radius: 10rpx;
-   border: 1px solid #ccc;
-}
-.s_pic{
-  width: 80%;
-  height: 200rpx;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 10rpx;
- 
-}
-.share_word{
-  width: 80%;
-  height: 80rpx;
-  padding-left: 10%;
-  margin-top: 5rpx;
-  padding-bottom: 5rpx;
-  
-}
-.st_txt{
-  color: white;
-  font-weight: 500;
-  padding-left: 5%;
-  margin-bottom: 10rpx;
-  
-
-}
-.share_txt{
-  font-size: 20rpx;
-}
-::-webkit-scrollbar{
-  width: 0;
-  height: 0;
-  color: transparent;
-}
-.feedback_like {
-  height: 30rpx;
-  width: 30rpx;
-  padding-right: 18rpx;
-  padding-left: 18rpx;
-}
-.like_unlike_comment {
-  text-align:left;
-  padding-top: 90rpx;
-  
-}
-.share_comment {
-   width: 30rpx;
-   height: 30rpx;
-  text-align:left;
-  padding-left: 18rpx;
-}
 .input_button{
   color: white;
   text-align: center;
@@ -152,22 +41,24 @@
   height: 30rpx;
   width: 30rpx;
 }
+/*广告*/
+
 .ad{
-  margin-top: 110rpx;
+  margin-top: 10rpx;
 }
 .container {
-  position:absolute;
+  position:relative;
   width: 100%;
-  height: 450rpx;
-  margin-top: 10rpx;
+  height: 255rpx;
+
   margin-bottom: 10rpx;
 
 }
 
 .swiper_adv {
   height: 100%;
-  width: 90%;
-  padding-left: 5%;
+  width: 100%;
+  
   border-radius: 10rpx;
 }
 
@@ -181,4 +72,100 @@ swiper {
  
   font-weight: 500;
   margin-left: 5%;
+}
+
+/*学员说说*/
+.stu_all {
+  width: 100%;
+  height: 100%;
+  margin-top: 80rpx;
+    }
+
+.stu_word {
+  position: absolute;
+  width: 100%;
+  height: 300rpx;
+}
+
+.stu_item {
+  border-bottom: 12rpx solid rgba(245, 245, 245,0);
+  background: rgba(245, 245, 245,0.1);
+}
+.card {
+ width: 90%;
+ margin: 0px auto;
+ background:white;
+ box-shadow: 6px 0px 5px #888888;
+ border-radius: 2%;
+}
+.stu_txt {
+  font-size: 10px;
+}
+.stu_word_txt {
+  font-weight: 600;
+  width: 89.5%;
+  margin: 0px auto;
+  line-height: 14pt;
+  text-indent: 1em;
+  padding-top: 25rpx;
+  font-size: 15px;
+}
+.stu_time {
+  font-size: 8px;
+  padding-top: 10rpx;
+  margin-left: 580rpx;
+}
+
+.stu_like {
+  height: 30rpx;
+  width: 30rpx;
+  padding: 18rpx;
+}
+.stu_unlike {
+  height: 30rpx;
+  width: 30rpx;
+  padding: 18rpx;
+}
+.stu_report {
+  height: 30rpx;
+  width: 30rpx;
+  padding: 18rpx;
+}
+.stu_btn {
+  position: fixed;
+  width: 70rpx;
+  height: 70rpx;
+  bottom: 100rpx;
+  right: 40rpx;
+}
+.stu_icon {
+  position: relative;
+  margin-right: 2px;
+ padding-top: 15rpx;
+ margin-left: 450rpx;
+}
+.stu_pic{
+  height: 100rpx;
+  width:100rpx;
+  text-align: center;
+  border-radius: 50%;
+  margin-top: 8rpx;
+  margin-left: 8rpx;
+}
+
+.stu_name{
+  font-size: 15px;
+  padding-left: 20rpx;
+}
+.stu_photo{
+  height:400rpx;
+  width: 95%;
+  padding-left: 3%;
+  margin-top: 20rpx;
+  margin-bottom: 8rpx;
+}
+.page{
+  height: 100%;
+  width: 100%;
+  background: #fbf9fe
 }

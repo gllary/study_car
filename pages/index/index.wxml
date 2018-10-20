@@ -6,7 +6,7 @@
 
   <view class='second'>
       <view>
-    <button class='wel_btn' bindtap='toindex' >欢迎进入</button>
+    <button class='wel_btn' bindgetuserinfo = "onGotUserInfo" open-type='getUserInfo' lang = "zh_CN" >欢迎进入</button>
       </view>
   <view class='wel_txt'>
   隶属于猎焰文化

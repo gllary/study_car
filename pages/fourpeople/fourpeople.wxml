@@ -15,7 +15,7 @@
 
   </view>
 
-<view class='fourpeople_button' bindtap='show'>
+<view class='fourpeople_button' bindtap='Toentryform'>
   <button class='fourpeople_signup'>
 立即报名参加
 </button>
@@ -24,7 +24,7 @@
 
 </view>
 <!--这是一个单独的表单-->
-<view class='form' hidden="{{flag}}" >
+<!--<view class='form' hidden="{{flag}}" >
 <view class='pic_back'>
   <view class='pic_abut'>
        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
@@ -35,11 +35,6 @@
     </view>
 </view>
   <view class='content'>
-  <!--
-  这是如果是图片的话，就用这个
-   
-  
-  -->
   <view class='content_txt'>
       <text>{{message}}</text>
     </view>
@@ -49,10 +44,7 @@
       开始填写
       </button>
     </view>
-
   </view>
-
-
-</view>
+</view>-->
 
 

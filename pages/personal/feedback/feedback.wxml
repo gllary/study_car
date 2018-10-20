@@ -10,27 +10,27 @@
       <view  wx:for="{{feedbacks}}" wx:key="feedback">
         <view class='feedback_item' data-id="{{item.id}}">
           <view class='card'>
-          <!--这是主要的文字层-->
-          <view class='feedback_word_txt'>
-            <text class='feedback_txt'>{{item.feedback_txt}}</text>
-          </view>
-          <view class='time'>
-            <text class='feedback_time'>{{item.feedback_time}}</text>
-          </view>
-          <!--这是主要的icon层-->
-          <view class='like_unlike_comment'>
-            <image  data-id="{{item.id}}" class='feedback_like' src="{{item.like?'../../image/like1.png' : '../../image/like0.png'}}" bindtap='likereact' ></image>
-          <image data-id="{{item.id}}" class='feedback_unlike' src="{{item.unlike?'../../image/unlike1.png' : '../../image/unlike0.png' }}" bindtap='unlikereact'></image>
-            <image class='feedback_report' src='../../image/report.png'></image>
+            <!--这是主要的文字层-->
+            <view class='feedback_word_txt'>
+              <text class='feedback_txt'>{{item.feedback_txt}}</text>
+            </view>
+            <view class='time'>
+              <text class='feedback_time'>{{item.feedback_time}}</text>
+            </view>
+            <!--这是主要的icon层-->
+            <view class='like_unlike_comment'>
+              <image  data-id="{{item.id}}" class='feedback_like' src="{{item.like?'../../image/like1.png' : '../../image/like0.png'}}" bindtap='likereact' ></image>
+              <image data-id="{{item.id}}" class='feedback_unlike' src="{{item.unlike?'../../image/unlike1.png' : '../../image/unlike0.png' }}" bindtap='unlikereact'></image>
+              <image class='feedback_report' src='../../image/report.png'></image>
+            </view>  
           </view>  
-        </view>  
-      </view>
-    </view> 
-</view>
+        </view>
+      </view> 
+    </view>
     <view class='feedback_button'>
        <image class='feedback_btn' src='../../image/leavemessage.png' bindtap='show'></image>
     </view>
-  </view>
+</view>
 
 <!--隐藏发布评论-->
 <view class='input_report' hidden="{{flag}}">
@@ -38,18 +38,16 @@
     <view class='txt'>
       <textarea class='input_txt' placeholder='{{message}}' minlength="{{min}}" maxlength="{{max}}            "></textarea>
       <text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text>
-<!--<text class="hint">{{texts}}</text>-->
-
-
-</view>
-<view class='commit_btn'>
-  <button class='commit' bindtap='hide'>匿名建议</button>
+      <!--<text class="hint">{{texts}}</text>-->
+    </view>
+    <view class='commit_btn'>
+      <button class='commit' bindtap='hide'>匿名建议</button>
+    </view>
   </view>
-</view>
- <block wx:for="{{imgUrls}}" wx:key="{{index}}">
-  <view class='for_back'>
-  <image class='forback_pic' src='{{item}}' bindtap='hide'></image>
-  </view>
+  <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <view class='for_back'>
+      <image class='forback_pic' src='{{item}}' bindtap='hide'></image>
+     </view>
   </block>
 </view>
 

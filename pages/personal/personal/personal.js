@@ -7,15 +7,13 @@ Page({
    */
   data: {
     
-    moneybalance:0,
-    couponnum: 0,
-    integralnum: 0,
+    Money:0,
+    coupon: 0,
+    integr: 0,
     myteacher: '无',
     if_apply:'未报名',
-    Customer_call:'123456',
-   
-    
-
+    Customer_call:'15207167639',
+    openid:''
   },
 
   /**
@@ -33,28 +31,19 @@ Page({
         console.log("jia");
       },
     });
-
-    wx.request({
-      url: 'http://result.eolinker.com/gEUIzZyd311350ff3d0982a5b71cc809c83d3b83a0d021c?uri=reasontest',
-      method:'GET',
-      header: { "Content-Type": 'application/json'},
-      
-      success:function(res){
-        console.log(res.data);
+    wx.getStorage({
+      key: 'openid',
+      success: function(res) {
+        console.log(res)
+        console.log(res.data)
         that.setData({
-          moneybalance: res.data.moneybalance,
-          couponnum: res.data.couponnum,
-          integralnum: res.data.integralnum,
-          myteacher: res.data.myteacher,
-          if_apply: res.data.if_apply,
-          Customer_call: res.data.Customer_call,
-
+          openid:res.data
         })
-       
-
-
-      }
+        console.log(that.data.openid)
+        
+      },
     })
+    
    
    
   },
@@ -69,7 +58,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that=this
+    console.log(that.data.openid)
+    //这里每次显示的时候，通过openID请求所有数据，包括头像等信息
+    wx.request({
+      url: 'https://www.lieyanwenhua.com/userqueryByid',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        "openid": that.data.openid,
+        "Money":that.data.Money,
+        "coupon":that.data.coupon,
+        "inter":that.data.inter
+      },
+      success: function (res) {
+        console.log(res.data);
+       
+      },
+      fail: function (res) {
+        console.log(res);
+      }
+    })
   },
 
   /**
@@ -144,6 +155,24 @@ Page({
     wx.showToast({
       title: '敬请期待！',
       icon: 'loading'
+    })
+
+    wx.navigateToMiniProgram({
+
+      appId: '',
+
+      path: 'pages/index/index?id=123',
+
+      extraData: {},
+
+      envVersion: 'develop',
+
+      success(res) {
+
+        // 打开成功
+
+      }
+
     })
   },
   Tocustom:function(){
