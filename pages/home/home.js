@@ -6,11 +6,8 @@ Page({
    */
   data: {
     imgUrls:[
-      "../image/top1.png",
-      "../image/top2.png",
-      "../image/top3.png",
-      "../image/top4.png",
-    ]
+
+    ],
   },
   switchTab: function (e) {
     this.setData({
@@ -75,7 +72,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this
+    var array=new Array()
+    for(let i=1;i<5;i++){
+      let url = ""+i+".png"
+      wx.downloadFile({
+        url: url,
+        success: (res) => {
+          let temp = res.tempFilePath
+          array[i-1]=temp
+          that.setData({
+            imgUrls : array
+          })
+        }
+      })
+    }
+    
   },
 
   /**
@@ -118,6 +130,9 @@ Page({
   showad:function(){
     wx.showToast({
       title: '广告位招标！',
+    })
+    wx.navigateTo({
+      url: '../ad/ad',
     })
 
   }

@@ -1,0 +1,8 @@
+<!--pages/ad/ad.wxml-->
+<view class='pic'>
+  <image src='../image/1.jpg' class='pic1'></image>
+</view>
+<view class='word'>
+  <text>{{txt}}</text>
+
+</view>

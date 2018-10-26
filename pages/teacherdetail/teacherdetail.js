@@ -48,7 +48,7 @@ Page({
     var that=this
    
     wx.request({
-      url: 'https://www.lieyanwenhua.com/coach_single',
+      url: '',
       method: 'POST',
       data: {
         "tid": that.data.tid
@@ -69,7 +69,7 @@ Page({
       }
     })
       wx.request({
-        url: 'https://www.lieyanwenhua.com/coach_comment',
+        url: '',
         method: 'POST',
         data: {
           "tid": that.data.tid
@@ -87,27 +87,6 @@ Page({
           console.log(res);
         }
       })
-      // 在这里通过openid请求评论人物的头像和昵称信息
-    // wx.request({
-    //   url: 'https://www.lieyanwenhua.com/userqueryByid',
-    //   method: 'POST',
-    //   data: {
-    //     "openid": 
-    //   },
-    //   header: {
-    //     'content-type': 'application/x-www-form-urlencoded'
-    //   },
-    //   success: function (res) {
-    //     console.log(res.data);
-    //     that.setData({
-    //       comments: res.data.comment_user
-    //     })
-    //   },
-    //   fail: function (res) {
-    //     console.log(res);
-    //   }
-    // })
-
 
   },
 
@@ -152,28 +131,7 @@ Page({
     })
   },
   input_button:function(){
-    //这里是发布评论的地方，发布评论最好是在此重拉一次评论数据
-  //   wx.request({
-  //     url: 'https://www.lieyanwenhua.com/comment_insert',
-  //     method: 'POST',
-  //     data: {
-  //       "tid": that.data.tid,
-  //       "openid":that.data.openid,
-  //       "comment":"这里是评论内容"
-  //     },
-  //     header: {
-  //       'content-type': 'application/json'
-  //     },
-  //     success: function (res) {
-  //      //这里评论成功会返回1
 
-
-
-  //     },
-  //     fail: function (res) {
-  //       console.log(res);
-  //     }
-  //   })
   }
 })
 

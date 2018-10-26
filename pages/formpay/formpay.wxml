@@ -8,7 +8,8 @@
   <view class='inf'>QQ: {{qq}}</view>
   <view class='inf'>微信：{{wechat}}</view>
   <view class='inf'>教练：{{teacher}}</view>
-  <view class="inf"  > 
+  <view class='inf'>报名类型：{{car}}</view>
+ <!-- <view class="inf"  > 
     <view class="section" >
       <picker  value="{{index}}" range="{{casArray}}" bindchange="bindCasPickerChange">
         <view class='picker'>
@@ -16,7 +17,7 @@
         </view>
       </picker>
     </view>
-  </view>
+  </view>-->
     
 </view>
  <view class='sub'>

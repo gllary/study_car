@@ -19,11 +19,11 @@
   </view>
 
   <view class='timeorder'>
-  <image class='ordertime' src='../image/time3.png' bindtap='time3'></image> 
+  <image class='ordertime' src='../image/time4.png' bindtap='time3'></image> 
   </view>
 
   <view class='timeorder'>
-  <image class='ordertime' src='../image/time4.png' bindtap='time4'></image> 
+  <image class='ordertime' src='../image/time3.png' bindtap='time4'></image> 
   </view>
 
 </view>

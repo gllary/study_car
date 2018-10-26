@@ -29,7 +29,7 @@ Page({
   onShow: function () {
     var that=this
     wx.request({
-      url: 'https://www.lieyanwenhua.com/coachall',
+      url: '',
       method: 'POST',
       data: {
       },
@@ -49,6 +49,7 @@ Page({
 
       }
     })
+
   },
 
   /**
@@ -96,21 +97,30 @@ Page({
   //这里的官方方法改变，需要字符串加起来
   //like是点赞，unlike是踩，点击评论跳到另一个界面
   likereact:function(e){
-    var id = e.target.dataset.id;
-    this.data.teachers[id].like = this.data.teachers[id].like  ? 0 : 1;
-    var l="teachers["+id+"].like";
-    this.setData({
-      [l]: this.data.teachers[e.target.dataset.id].like 
-    })
+    var that = this;
+    console.log(e.target.dataset.id)
+    var id = e.target.dataset.id 
+ 
+    if(id==2)
+    {
+      console.log(that.data.coach[0].like)
+      that.data.coach[0].like = that.data.coach[0].like ? 0 : 1;
+      var l = "coach[0].like";
+      that.setData({
+        [l]: that.data.coach[0].like
+      })
+
+    }
+
+    if(id==1){
+      console.log(that.data.coach[1].like)
+      that.data.coach[1].like = that.data.coach[1].like ? 0 : 1;
+      var l = "coach[1].like";
+      that.setData({
+        [l]: that.data.coach[1].like
+      })
+    }
+
+
   },
-  unlikereact:function(e){
-    var id = e.target.dataset.id;
-    this.data.teachers[id].unlike = this.data.teachers[id].unlike ? 0 : 1;
-    var l = "teachers[" + id + "].unlike";
-    this.setData({
-      [l]: this.data.teachers[e.target.dataset.id].unlike
-    })
-  }
-
-
 })

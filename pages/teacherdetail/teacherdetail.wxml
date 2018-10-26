@@ -5,7 +5,7 @@
       <view class="teacher-item">
       <!-- 这里是左边的头像以及教练名称 -->
       <view class='pic_intro'>
-      <image class='teacher_pic' src='../image/teacher1.png' ></image>
+      <image class='teacher_pic' src='{{teachers.avatar}}' ></image>
       <text class='item_name'>{{teachers.tname}}\n</text>
       </view>
 <!-- 右边的简介以及图标 -->
@@ -18,12 +18,10 @@
       </view>
 </view>
        
-
  </view>
 </view>
 
 <!--以下是评论界面-->
-
 <view class='comment_all'>
   <view class='comment_one'>
       <view  class='commentonec' wx:for="{{comments}}" wx:key="comment">

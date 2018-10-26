@@ -20,10 +20,10 @@
     "pages/login/register/register",
     "pages/login/forgetpasswd/forgetpasswd",
     "pages/login/certification/certification",
-    "pages/test/test",
     "pages/directlogin/directlogin",
     "pages/formpay/formpay",
-    "pages/friend/my_message"
+    "pages/friend/my_message",
+    "pages/ad/ad"
   ],
   "window": {
     "backgroundTextStyle": "light",

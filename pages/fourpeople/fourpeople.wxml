@@ -6,10 +6,10 @@
        <text class='word1'>
       “四人行，必有你师”
       </text>
-      <text class='word2'>
+      <text class='word1'>
       每台车四个人轮流训练，相互学习指导!
       </text>
-      <text class='word3'>
+      <text class='word1'>
       学车互相八卦吹牛，训练不寂寞!
       </text>
 
@@ -23,28 +23,5 @@
 </view>
 
 </view>
-<!--这是一个单独的表单-->
-<!--<view class='form' hidden="{{flag}}" >
-<view class='pic_back'>
-  <view class='pic_abut'>
-       <block wx:for="{{imgUrls}}" wx:key="{{index}}">
-              <swiper-item>
-                 <image bindtap="hide" class='pic_img' src="{{item}}"/>
-              </swiper-item>
-           </block>
-    </view>
-</view>
-  <view class='content'>
-  <view class='content_txt'>
-      <text>{{message}}</text>
-    </view>
-   
-    <view class='content_btn'>
-      <button class='onlyfor_fontsize' bindtap='hide' bindtap='Toentryform' >
-      开始填写
-      </button>
-    </view>
-  </view>
-</view>-->
 
 

@@ -14,24 +14,24 @@
  </view>
   <!--三种套餐选择-->
 
-  <view class='apply'>
+ <view class='apply'>
 
-    <view class='home_picback'>
+   <!--<view class='home_picback'>
   <image class='pic_back' src='../image/f_bgp.jpg'></image>
-  </view>
+  </view>-->
   
-  <view class='one_people_img'>
-  <image class='one_people' bindtap='to_one_people' src='../image/a1.png'> </image>
-  </view>
+    <view class='one_people_img'>
+      <image class='one_people' bindtap='to_one_people' src='../image/a1.png'> </image>
+    </view>
 
     <view class='four_people_img'>
-  <image class='four_people' bindtap='to_four_people' src='../image/a2.png'></image>
-  </view>
+     <image class='four_people' bindtap='to_four_people' src='../image/a2.png'></image>
+    </view>
 
     <view class='team_people_img'>
-    <image class='group' bindtap='to_group' src='../image/a3.png'></image>
-  </view>
+      <image class='group' bindtap='to_group' src='../image/a3.png'></image>
+    </view>
 
 
-  </view>
+</view>
 

@@ -27,6 +27,7 @@ swiper {
   position: fixed;
   top: 450rpx;
   text-align: center;
+  background: #9aadef;
 }
 .home_picback {
   width: 100%;

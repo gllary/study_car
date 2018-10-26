@@ -1,4 +1,5 @@
 // pages/entryform/entryform.js
+
 Page({
 
   /**
@@ -12,6 +13,7 @@ Page({
     qq:'',
     weixin:'',
     teacher:'',
+    
   
   },
   show:function(){
@@ -61,6 +63,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
   
   },
 

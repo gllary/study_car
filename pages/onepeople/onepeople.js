@@ -1,4 +1,5 @@
 // pages/onepeople/onepeople.js
+var app = getApp();
 Page({
 
   /**
@@ -9,7 +10,8 @@ Page({
       '../image/forback.png',
     ],
     message:"  \t您将支付一人学车的费用，这些费用将不予退还，如果您后期将要取得，请咨询客服询问详细情况!",
-    flag:true
+    flag:true,
+    car:''
   },
   show: function () {
     this.setData({ flag: false })
@@ -18,6 +20,11 @@ Page({
     this.setData({ flag: true })
   },
   Toentryform:function(){
+    var that = this;
+    that.setData({
+      car:"一对一学车"
+    })
+    app.globalData.car=that.data.car
     wx.navigateTo({
       url: '../entryform/entryform',
     })

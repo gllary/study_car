@@ -1,4 +1,5 @@
 // pages/friend/friend.js
+var app = getApp()
 Page({
 
   /**
@@ -7,50 +8,19 @@ Page({
   data: {
     'inform':'一对一学车”，享受VIP教学！',
     flag: 'true',
-    imgUrls: [
-      "../image/1.jpg",
-      "../image/1.jpg",
-      "../image/1.jpg",
-      "../image/1.jpg",
-    ]
-    ,
+    imgUrls: [],
+    circleid:5,
+    content:'',
+    openid:'',
+    stus:[],
+    all:[],
+    stu:[],
+    comment:[],
+    textdata:'',
+    users:[],
+    p:[],
+    n:[],
 
-    shares:null,
-    stus: [{
-      id: 0,
-      stu_txt: "这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台，你好",
-      stu_time: "2018.10.18",
-      stu_pic:"../image/1.jpg",
-      stu_name:"楚熙",
-      stu_photo:"../image/1.jpg"
-
-    },
-    {
-      id: 1,
-      stu_txt: "这是一个好的想法，将传统驾校和实地结合起来",
-      stu_time: "2018.8.22"
-    },
-    {
-      id: 2,
-      stu_txt: "这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台，非常感谢大家，我是武汉理工余家头小霸王，这是一个非常好的APP，希望不要被这个淹没，你好你好这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台",
-      stu_time: "2018.8.22"
-    },
-    {
-      id: 3,
-      stu_txt: "这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台，非常感谢大家，我是武汉理工余家头小霸王，这是一个非常好的APP，这是一个非常好的APP，希望不要被这个淹没，你好你好",
-      stu_time: "2018.8.22"
-    },
-    {
-      id: 4,
-      stu_txt: "这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台，这是一个非常好的APP，希望不要被这个淹没，希望不要被这个淹没，你好你好",
-      stu_time: "2018.8.22"
-    },
-    {
-      id: 5,
-      stu_txt: "这是一个好的想法，将传统驾校和实地结合起来，这是一个非常好的APP，希望不要被这个淹没，你好你好希望不要被这个淹没，你好你好",
-      stu_time: "2018.8.22"
-    }
-    ]
 
 
   
@@ -61,28 +31,105 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.request({
-      url: 'xxx',
+
+    wx.getStorage({
+      key: 'userInfo',
+      success: function (res) {
+        console.log("cheng");
+        that.setData({
+          userInfo: res.data
+        })
+      },
+    });
+    wx.getStorage({
+      key: 'openid',
+      success: function (res) {
+        console.log(res)
+        console.log(res.data)
+        that.setData({
+          openid: res.data
+        })
+
+      },
+    });
+    var array = new Array()
+
+    for (let i = 1; i < 4; i++) {
+      let url = "" + i + ".png"
+      wx.downloadFile({
+        url: url,
+        success: (res) => {
+          let temp = res.tempFilePath
+          array[i - 1] = temp
+          that.setData({
+            imgUrls: array
+          })
+        }
+      })
+
+    }
+ /*   wx.request({
+      url: 'https://www.lieyanwenhua.com/circleall',
       method: 'POST',
       header: { "Content-Type": 'application/json' },
 
       success: function (res) {
-        console.log(res.data);
+
         that.setData({
-          inform:res.data.inform,
-          shares: res.data.shares
-
+          all: res.data.circleall,
+         
         })
-        
+        console.log(that.data.all.length)
 
-   },
-    })
+        for (var i = 0; i < that.data.all.length; i++) {
+          that.data.stu[i] = that.data.all[i];
+          console.log(that.data.stu[i].circleid)
+          wx.request({
+            url: 'https://www.lieyanwenhua.com/userqueryByid',
+            header: { "Content-Type": "application/x-www-form-urlencoded" },
+            method: 'POST',
+            data: {
+              openid: that.data.all[i].openid
+            },
+            success: function (res) {
+              let p = that.data.p;
+              let n = that.data.n;
+
+              p.push(res.data.userbyid.avatarUrl)
+              n.push(res.data.userbyid.nickName)
+
+              that.setData({
+                p,
+                n
+              })
+              console.log(that.data.p)
+
+            }
+
+          })
+
+
+        }
+        // console.log(that.data.p)
+        that.setData({
+          stus: that.data.stu
+        })
+
+
+
+      },
+    })*/
+
+
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+  
+
   
   },
 
@@ -90,6 +137,66 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this
+
+    wx.request({
+      url: '',
+      method: 'POST',
+      header: { "Content-Type": 'application/json' },
+
+      success: function (res) {
+
+        that.setData({
+          all: res.data.circleall,
+        })
+        console.log(that.data.all.length)
+        that.setData({
+          p:[],
+          n:[]
+        })
+
+        
+
+        for (var i = 0; i < that.data.all.length; i++) {
+          that.data.stu[i] = that.data.all[i];
+          console.log(that.data.stu[i].openid)
+          wx.request({
+            url: '',
+            header: { "Content-Type": "application/x-www-form-urlencoded" },
+            method: 'POST',
+            data: {
+              openid: that.data.all[i].openid
+            },
+            success: function (res) {
+
+
+           let p = that.data.p;
+              let n = that.data.n;
+
+              p.push(res.data.userbyid.avatarUrl)
+              n.push(res.data.userbyid.nickName)
+
+              that.setData({
+                p,
+                n
+              })
+              console.log(that.data.p)
+
+            }
+
+          })
+
+
+        }
+         console.log(that.data.p)
+        that.setData({
+          stus: that.data.stu
+        })
+
+
+
+      },
+    })
   
   },
 
@@ -128,20 +235,18 @@ Page({
   
   },
   likereact: function (e) {
-    var id = e.target.dataset.id;
-    this.data.stus[id].like = this.data.stus[id].like ? 0 : 1;
-    var l = "stus[" + id + "].like";
-    this.setData({
-      [l]: this.data.stus[e.target.dataset.id].like
-    })
-  },
-  unlikereact: function (e) {
-    var id = e.target.dataset.id;
-    this.data.stus[id].unlike = this.data.stus[id].unlike ? 0 : 1;
-    var l = "stus[" + id + "].unlike";
-    this.setData({
-      [l]: this.data.stus[e.target.dataset.id].unlike
-    })
+   
+    var that=this;
+    console.log('try')
+    console.log(e.target.dataset.id)
+    var id = e.target.dataset.id-1
+   
+    console.log(that.data.stus[id].like)
+    that.data.stus[id].like = that.data.stus[id].like ? 0 : 1;
+    var l = "stus[" +id + "].like";
+  that.setData({
+    [l]: that.data.stus[id].like
+  })
   },
   /*
   控制评论区
@@ -150,12 +255,7 @@ Page({
     this.setData({ flag: false })
 
   },
-  hide: function () {
-    this.setData({ flag: true })
-    wx.showToast({
-      title: '私信成功！',
-    })
-  },
+ 
   showad: function () {
     wx.showToast({
       title: '广告位招标！',
@@ -166,5 +266,63 @@ Page({
     wx.navigateTo({
       url: '../friend/my_message',
     })
+  },
+  liuyan:function(e){
+    var that = this;
+ 
+    that.setData({
+      content:e.detail.value,
+      circleid:e.target.id
+    })
+    console.log(that.data.circleid)
+    var t
+    that.setData({
+      t: that.data.content,
+      textdata: ' '
+    })
+    that.data.comment[that.data.circleid] = that.data.t
+    wx.request({
+      url: '',
+      method: 'POST',
+      header: { "Content-Type": 'application/json' },
+      success: function () {
+        that.setData({
+          circleid: that.data.circleid,
+          openid: that.data.openid,
+          comment: that.data.comment,
+        })
+        console.log("成功！")
+      },
+
+    })
+
+  },
+  ly_btn:function(){
+    var that=this
+    var t
+    that.setData({
+      t:that.data.content,
+      textdata:' '
+    })
+    that.data.comment[that.data.circleid]=that.data.t
+    wx.request({
+      url: 'https://www.lieyanwenhua.com/circominsert',
+      method: 'POST',
+      header: { "Content-Type": 'application/json' },
+      success: function () {
+        that.setData({
+          circleid: that.data.circleid,
+          openid: that.data.openid,
+          comment: that.data.comment,
+        })
+        console.log("成功！")
+      },
+
+    })
+    wx.showToast({
+      title: '留言成功',
+    })
+
+
   }
 })

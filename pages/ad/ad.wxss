@@ -1,0 +1,20 @@
+/* pages/ad/ad.wxss */
+.pic{
+  width: 100%;
+  border-bottom: 10rpx solid rgb(245,245,245);
+  height: 350rpx;
+  margin-bottom: 15rpx;
+}
+.pic1{
+  height: 350rpx;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+
+}
+.word{
+  width: 90%;
+  margin-left: 5%;
+  line-height: 14pt;
+  text-indent: 1em;
+}

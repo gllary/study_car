@@ -9,10 +9,10 @@ Page({
     
     Money:0,
     coupon: 0,
-    integr: 0,
+    inter: 0,
     myteacher: '无',
     if_apply:'未报名',
-    Customer_call:'15207167639',
+    Customer_call:'',
     openid:''
   },
 
@@ -39,7 +39,7 @@ Page({
         that.setData({
           openid:res.data
         })
-        console.log(that.data.openid)
+      //  console.log(that.data.openid)
         
       },
     })
@@ -62,24 +62,17 @@ Page({
     console.log(that.data.openid)
     //这里每次显示的时候，通过openID请求所有数据，包括头像等信息
     wx.request({
-      url: 'https://www.lieyanwenhua.com/userqueryByid',
+      url: '',
+      header: { "Content-Type": "application/x-www-form-urlencoded" },
       method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
       data: {
-        "openid": that.data.openid,
-        "Money":that.data.Money,
-        "coupon":that.data.coupon,
-        "inter":that.data.inter
+        openid: that.data.openid
       },
       success: function (res) {
-        console.log(res.data);
-       
-      },
-      fail: function (res) {
-        console.log(res);
+        console.log(res.data)
+
       }
+
     })
   },
 

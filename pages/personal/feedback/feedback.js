@@ -16,34 +16,20 @@ Page({
     flag: true,
     feedbacks:[{
       id:0,
-      feedback_txt:"这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台，非常感谢大家，我是武汉理工余家头小霸王，这是一个非常好的APP，希望不要被这个淹没，你好你好这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台，非常感谢大家，我是武汉理工余家头小霸王，这是一个非常好的APP，希望不要被这个淹没，你好你好",
-      feedback_time:"2018.8.22"
+      feedback_txt:"",
+      feedback_time:""
     },
     {
       id:1,
-      feedback_txt: "这是一个好的想法，将传统驾校和实地结合起来",
-      feedback_time: "2018.8.22"
+      feedback_txt: "",
+      feedback_time: ""
     },
     {
       id: 2,
-      feedback_txt: "这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台，非常感谢大家，我是武汉理工余家头小霸王，这是一个非常好的APP，希望不要被这个淹没，你好你好这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台，非常感谢大家，我是武汉理工余家头小霸王，这是一个非常好的APP，希望不要被这个淹没，你好你好",
-      feedback_time: "2018.8.22"
+      feedback_txt: "",
+      feedback_time: ""
       },
-      {
-        id: 3,
-        feedback_txt: "这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台，非常感谢大家，我是武汉理工余家头小霸王，这是一个非常好的APP，希望不要被这个淹没，你好你好这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台，非常感谢大家，我是武汉理工余家头小霸王，这是一个非常好的APP，希望不要被这个淹没，你好你好",
-        feedback_time: "2018.8.22"
-      },
-      {
-        id: 4,
-        feedback_txt: "这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台，非常感谢大家，我是武汉理工余家头小霸王，这是一个非常好的APP，希望不要被这个淹没，你好你好这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台，非常感谢大家，我是武汉理工余家头小霸王，这是一个非常好的APP，希望不要被这个淹没，你好你好",
-        feedback_time: "2018.8.22"
-      },
-      {
-        id: 5,
-        feedback_txt: "这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台，非常感谢大家，我是武汉理工余家头小霸王，这是一个非常好的APP，希望不要被这个淹没，你好你好这是一个好的想法，将传统驾校和实地结合起来，搭建一个完整的互联平台，非常感谢大家，我是武汉理工余家头小霸王，这是一个非常好的APP，希望不要被这个淹没，你好你好",
-        feedback_time: "2018.8.22"
-      }
+
     ]
   
   },
@@ -98,7 +84,43 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    //反馈建议获取
+    wx.request({
+      url: '',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+       
+      },
+      success: function (res) {
+        console.log(res.data);
+
+      },
+      fail: function (res) {
+        console.log(res);
+      }
+    })
+    // 反馈建议书写
+    wx.request({
+      url: 't',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        'openid':"openid",
+        'fbtxt':"这里是填写评论的地方，真确返回true"
+      },
+      success: function (res) {
+        console.log(res.data);
+
+      },
+      fail: function (res) {
+        console.log(res);
+      }
+    })
   },
 
   /**

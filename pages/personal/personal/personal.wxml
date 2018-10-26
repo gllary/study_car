@@ -1,42 +1,40 @@
-<!--pages/personal/personal/personal.wxml
-<image class='userinfo_avatar' src="{{userInfo.avatarUrl}}" background-size="cover" bindtap='usersetup'></image>
-<text class='userinfo_nickname' bindtap='usersetup'>{{userInfo.nickName}}</text>
--->
 <view class='userinfobackclass'>
-  <image class='userinfoback' src='../../image/userinfoback.png'></image>
+  <image class='userinfoback'src='../../image/userinfoback.png'></image>
 </view>
-
 <view class='userform' >
   <view class='userinfo'> 
     <view class='leftuserinfo'>
       <view class='pic_teacher'>
         <image class='useravatar' src="{{userInfo.avatarUrl}}" bindtap='usersetup'></image>
-        <text class='teacher_'>教练:</text>
-        <text class='is_teacher'>{{myteacher}}</text>
       </view> 
-
       <view class='nick_vip'>
-       <text class='userinfo_nickname' bindtap='usersetup'>{{userInfo.nickName}} </text>
-       <image class='is_vip' src='../../image/vip1.png'></image>
+        <text class='userinfo_nickname' bindtap='usersetup'>{{userInfo.nickName}} </text>
+        <image class='is_vip' src='../../image/vip1.png'></image>
       </view> 
     </view>
     
-        <view class='issign'>
-         <text class='userinfo_nickname'>{{if_apply}}</text>
-        </view>
-        <view class='balance_integral_coupon'>
-          <view class='data_n'>
-          <text class='balance' bindtap='Tobalance'>余额：{{Money}}</text>
-        </view>
-
-        <view class='data_n'>
-          <text class='balance' bindtap='Tointegral'>积分: {{coupon}}</text>
-        </view>
-        <view class='data_n'>
-          <text class='balance' bindtap='Tocoupon'>优惠券: {{inter}}</text>
-        </view>
-  </view>    
-</view>
+    <view class='issign'>
+       <text class='userinfo_nickname'>{{if_apply}}</text>
+    </view>
+    <view class='balance_integral_coupon'>
+      <view class='data_n'>
+        <text class='balance' >教练</text>
+        <text> {{myteacher}}</text>
+      </view>
+      <view class='data_n'>
+        <text class='balance' bindtap='Tobalance'>余额</text>
+        <text> {{Money}}</text>
+      </view>
+      <view class='data_n'>
+        <text class='balance' bindtap='Tointegral'>积分</text>
+        <text> {{coupon}}</text>
+      </view>
+      <view class='data_n'>
+        <text class='balance' bindtap='Tocoupon'>优惠券</text>
+        <text > {{inter}}</text>
+      </view>
+    </view>    
+ </view>
 
     <!--这里是下方的一系列的功能，包括商城转盘等功能-->
 
@@ -97,9 +95,5 @@
       </view>
       <view class='_txt' style='vertical-align:top;' bindtap='Toback'>退出登录</view>
     </view>
-
   </view>
-  
-
-
 </view>

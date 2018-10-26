@@ -1,121 +1,251 @@
+var app = getApp();
 Page({
+  
   data: {
     uploadedImages: [],
     imgBoolean: true,
-    content: ''
+    content: "不错",
+    openid: '',
+    circleid:' ',
+    t:3,
+    imgs: [],
+    ss:[]
+
+   
   },
   onLoad: function (options) {
+  
     var that = this;
-  },
-  chooseImage: function () {
-    var that = this;
-    // 选择图片
-    wx.chooseImage({
-      count: 1, // 默认9
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+    wx.getStorage({
+      key: 'userInfo',
       success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths
+        console.log("cheng");
         that.setData({
-          item: tempFilePaths[0],
-          imgBoolean: false
-        });
-      }
-    })
-  },
-  // 图片预览
-  previewImage: function (e) {
-    var current = e.target.dataset.src
-    wx.previewImage({
-      current: current,
-      urls: [current]
-    })
-    console.log("这是1" + current);
-  },
-  //删除图片
-  deleteImg: function (e) {
-    var that = this;
-    var images = that.data.uploadedImages;
-    that.setData({
-      uploadedImages: images,
-      imgBoolean: true
+          userInfo: res.data
+        })
+      },
     });
+    wx.getStorage({
+      key: 'openid',
+      success: function (res) {
+        console.log(res)
+        console.log(res.data)
+        that.setData({
+          openid: res.data
+        })
+
+      },
+    })
+
   },
-  input: function (e) {
+
+  chooseImg() {
+
+    let that = this;
+
+    let len = this.data.imgs;
+
+    if (len >= 3) {
+
+      this.setData({
+
+        lenMore: 1
+
+      })
+
+
+
+
+
+      return;
+
+    }
+
+    wx.chooseImage({
+
+      success: (res) => {
+
+        let tempFilePaths = res.tempFilePaths;
+
+        console.log(tempFilePaths)
+
+        let imgs = that.data.imgs;
+
+        for (let i = 0; i < tempFilePaths.length; i++) {
+
+          if (imgs.length <3 ) {
+
+            imgs.push(tempFilePaths[i])
+
+          } else {
+
+            that.setData({
+
+              imgs
+
+            })
+
+            wx.showModal({
+
+              title: '提示',
+
+              content: '最多只能有三张图片'
+
+            })
+
+            return;
+
+          }
+
+        }
+
+        that.setData({
+
+          imgs
+
+        })
+
+      }
+
+    })
+
+  },
+  previewImg(e) {
+
+    let index = e.currentTarget.dataset.index;
+
+    let imgs = this.data.imgs;
+
+    wx.previewImage({
+
+      current: imgs[index],
+
+      urls: imgs,
+
+    })
+
+  },
+
+  deleteImg(e) {
+
+    let _index = e.currentTarget.dataset.index;
+
+    let imgs = this.data.imgs;
+
+    imgs.splice(_index, 1);
+
     this.setData({
-      content: e.detail.value
+
+      imgs
+
+    })
+
+  },
+
+  input: function (e) {
+    var that=this;  
+    that.setData({
+      content:e.detail.value,  
     })
   },
   //发布按钮事件
   send: function () {
     var that = this;
-    var user_id = wx.getStorageSync('userid')
     wx.showLoading({
       title: '上传中',
+
     })
-    that.img_upload()
+    wx.request({
+      url: '',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        openid: that.data.openid,
+        mess: that.data.content
+      },
+      success: function (res) {
+        var id;
+        that.setData({
+          id: res.data
+
+        })
+        that.data.circleid = that.data.id;
+
+        app.globalData.flag = res.data
+        console.log("成功")
+        console.log(that.data.circleid)
+      /*  var uploadImgCount = 0;
+        for (var i = 0, h = that.data.imgs.length; i <= h; i++) {
+          wx.uploadFile({
+            url: 'https://lieyan-1257158697.cos.ap-shanghai.myqcloud.com/circle/',
+            filePath: that.data.imgs[i],
+            name: that.data.circleid + 'image_' + i + '.png',
+            success: function (res) {
+              wx.showToast({
+                title: '成功上传',
+
+              })
+              wx.switchTab({
+                url: '../friend/friend',
+              })
+
+            }
+          })
+        }*/
+ 
+        wx.showToast({
+          title: '成功上传',
+        })
+      }
+    })
+     //传图片
+    that.uploadimg({
+      url: '',
+      path: that.data.imgs
+    })
+
+    wx.switchTab({
+      url: '../friend/friend',
+    })
+
+   
   },
-  //图片上传
-  img_upload: function () {
-    let that = this;
-    let img_url = that.data.uploadedImages;
-    let img_url_ok = [];
-    //由于图片只能一张一张地上传，所以用循环
-    for (let i = 0; i < img_url.length; i++) {
-      wx.uploadFile({
-        //路径填你上传图片方法的地址
-        url: '#',
-        filePath: img_url[i],
-        name: 'file',
-        formData: {
-          'user': 'test'
-        },
-        success: function (res) {
-          console.log('上传成功');
-          //把上传成功的图片的地址放入数组中
-          img_url_ok.push(res.data)
-          //如果全部传完，则可以将图片路径保存到数据库
-          if (img_url_ok.length == img_url.length) {
-            var userid = wx.getStorageSync('userid');
-            var content = that.data.content;
-            wx.request({
-              url: '#',
-              data: {
-                user_id: userid,
-                images: img_url_ok,
-                content: content,
-              },
-              success: function (res) {
-                if (res.data.status == 1) {
-                  wx.hideLoading()
-                  wx.showModal({
-                    title: '提交成功',
-                    showCancel: false,
-                    success: function (res) {
-                      if (res.confirm) {
-                        wx.switchTab({
-                          url: '../friend/friend',
-                        })
-                      }
-                    }
-                  })
-                }
-              }
-            })
-          }
-        },
-        fail: function (res) {
-          console.log('上传失败')
-          wx.switchTab({
-            url: '../friend/friend',
-          })
-          wx.showToast({
-            title: '网络错误',
-            icon: 'loading'
-          })
+  uploadimg:function(data){
+    var that = this,
+    i=data.i ? data.i : 0,//当前上传的哪张图片
+    success=data.success ? data.success : 0,//上传成功的个数
+    fail=data.fail ? data.fail : 0;//上传失败的个数
+    wx.uploadFile({
+      url: data.url,
+      filePath: data.path[i],
+      name: that.data.circleid + 'image_' + i + '.png',//这里根据自己的实际情况改
+      formData: null,//这里是上传图片时一起上传的数据
+      success: (resp) => {
+        success++;//图片上传成功，图片上传成功的变量+1
+        console.log(resp)
+        console.log(i);
+        //这里可能有BUG，失败也会执行这里,所以这里应该是后台返回过来的状态码为成功时，这里的success才+1
+      },
+      fail: (res) => {
+        fail++;//图片上传失败，图片上传失败的变量+1
+        console.log('fail:' + i + "fail:" + fail);
+      },
+      complete: () => {
+        console.log(i);
+        i++;//这个图片执行完上传后，开始上传下一张
+        if (i == data.path.length) {   //当图片传完时，停止调用          
+          console.log('执行完毕');
+          console.log('成功：' + success + " 失败：" + fail);
+        } else {//若图片还没有传完，则继续调用函数
+          console.log(i);
+          data.i = i;
+          data.success = success;
+          data.fail = fail;
+          that.uploadimg(data);
         }
-      })
-    }
-  }
+
+      }
+    });
+  },
+
 })

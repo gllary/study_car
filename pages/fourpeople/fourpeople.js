@@ -1,4 +1,5 @@
 // pages/fourpeople/fourpeople.js
+var app=getApp();
 Page({
 
   /**
@@ -20,6 +21,11 @@ Page({
     this.setData({ flag: true })
   },
   Toentryform: function () {
+    var that =this;
+    that.setData({
+      car: "四人学车"
+    })
+    app.globalData.car = that.data.car
     wx.navigateTo({
       url: '../entryform/entryform',
     })

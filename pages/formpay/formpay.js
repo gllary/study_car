@@ -1,4 +1,5 @@
 // pages/formpay/formpay.js
+var app = getApp();
 Page({
 
   /**
@@ -12,6 +13,7 @@ Page({
     qq: null,
     wechat: null,
     teacher: null,
+    car:null,
     casArray: ['一对一学车', '四人学车', '团购'],
   },
 
@@ -27,7 +29,8 @@ Page({
       address: options.address,
       qq: options.qq,
       wechat: options.wechat,
-      teacher: options.teacher
+      teacher: options.teacher,
+      car: app.globalData.car
       
     })
   },
@@ -82,7 +85,7 @@ Page({
   submit: function () {
     var that = this
     wx.request({
-      url: 'https://www.lieyanwenhua.com/forminsert',
+      url: '',
       data: {
         'fname': that.data.name,
         'ftel': that.data.tel,
@@ -102,7 +105,7 @@ Page({
           wx.login({
             success: function (res) {
               wx.request({
-                url: 'https://www.lieyanwenhua.com/code',
+                url: '',
                 data: {
                   code: res.code,
                 },
@@ -113,7 +116,7 @@ Page({
                 success: function (res) {
                   console.log(res.data.openid);
                   wx.request({
-                    url: 'https://www.lieyanwenhua.com/wxPay',
+                    url: '',
                     data: {
                       'openid': res.data.openid,
                       'body': "taocanyi",

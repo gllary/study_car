@@ -1,23 +1,26 @@
 <!--index/massege.wxml-->
 <view class='page'>
-  <textarea class='text' bindinput="input" placeholder="分享动态" auto-height/>
-  <view class="gallery">
-    <view class='item-ot'>
-      <view class="item">
-        <!-- 添加按钮 -->
-        <view class="addIcon" bindtap="chooseImage" wx:if="{{imgBoolean}}">
-          <view class=''>+</view>
-        </view>
-        <!-- 上传的图 -->
-        <view class='itemImg' >
-          <image src="{{item}}" data-src="{{item}}" bindtap="previewImage"  mode="aspectFill" />
-          <!-- 删除按钮 -->
-          <view class="delete" bindtap="deleteImg" data-index="{{index}}">X</view>
-        </view>
-        <view class='boxStyle'></view>
-      </view>
+  <textarea class='text' bindblur='input' placeholder="分享动态" auto-height/>
+
+  <view class="img-box">
+
+    <view class="img" wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
+
+        <image src="{{item}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>
+
+        <view class="delete-btn" data-index="{{index}}" catchtap="deleteImg">删除</view>
+
     </view>
-  </view>
+
+    <view class="upload-img-btn" bindtap="chooseImg" wx:if="{{imgs.length<3}}">+</view>
+
 </view>
+
+
+
+</view>
+
+
+
 <button href="javasctipt:;"  bindtap="send"  class='sub'>发布</button>
 

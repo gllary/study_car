@@ -75,7 +75,7 @@ Page({
   hand_in:function(){
     var that=this;
     wx.request({
-      url: 'http://result.eolinker.com/gEUIzZyd311350ff3d0982a5b71cc809c83d3b83a0d021c?uri=reasontest',
+      url: '',
       data:{
         reason:this.data.reason
       },
